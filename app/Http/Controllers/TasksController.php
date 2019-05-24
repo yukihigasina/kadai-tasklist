@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Task;
+
 class TasksController extends Controller
 {
     /**
@@ -14,7 +16,6 @@ class TasksController extends Controller
     public function index()
     {
         $tasks = Task::all();
-
         return view('tasks.index', [
             'tasks' => $tasks,
         ]);
@@ -100,14 +101,13 @@ class TasksController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function destroy($id)
-    {
-        public function destroy($id)
     {
         $task = Task::find($id);
         $task->delete();
 
         return redirect('/');
-    }
+    
     }
 }
